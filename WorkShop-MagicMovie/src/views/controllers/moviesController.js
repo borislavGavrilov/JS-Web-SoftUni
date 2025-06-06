@@ -24,6 +24,8 @@ moviesController.post('/movies/create' , (req,res) => {
 moviesController.get('/movies/:movieId/details' , (req,res) => {
    //get movie id from params
    const movieId = req.params.movieId
+   console.log(movieId);
+   
    
   
    const findetMovie = movieService.getOne(movieId)

@@ -16,9 +16,9 @@ export default {
 
     },
 
-    getOne(movieId) {
+    async getOne(movieId) {
       
-    const movie = movies.find(movie => movie.id === movieId)
+    const movie = await Movie.findById({_id: movieId})
        
     return movie
 
@@ -26,7 +26,7 @@ export default {
 
     async filtron(data){
 
-      let shallowCopy = await Movie.find()
+      let shallowCopy = await Movie.find().lean()
 
       console.log(shallowCopy);
       
