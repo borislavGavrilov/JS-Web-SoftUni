@@ -11,10 +11,9 @@ const app = express()
 app.use(express.static('./src/public'))
 
 //Add and config view engine
-app.engine('hbs' , handlebars.engine({
-    extname : 'hbs'
+app.engine('hbs', handlebars.engine({
+    extname: 'hbs',
 }))
-
 //Set default engine
 app.set('view engine' , 'hbs')
 

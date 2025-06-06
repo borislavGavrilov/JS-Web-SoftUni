@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import { Schema ,model} from "mongoose";
 
 const moviesSchema = new Schema({
    id: Number,
@@ -12,6 +12,6 @@ const moviesSchema = new Schema({
    description:String,
 })
 
-const Movie = mongoose.model('Movie' , moviesSchema)
+const Movie = model('Movie' , moviesSchema)
 
 export default Movie

@@ -36,11 +36,11 @@ moviesController.get('/movies/:movieId/details' , (req,res) => {
  
 })
 
-moviesController.get('/movie/search' , (req,res) => {
+moviesController.get('/movie/search' ,async (req,res) => {
 
    const filter = req.query
 
-   const movies =  movieService.filtron(filter)
+   const movies = await movieService.filtron(filter)
 
    
 
