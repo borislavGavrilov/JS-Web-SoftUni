@@ -13,6 +13,10 @@ app.use(express.static('./src/public'))
 //Add and config view engine
 app.engine('hbs', handlebars.engine({
     extname: 'hbs',
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+    }
 }))
 //Set default engine
 app.set('view engine' , 'hbs')

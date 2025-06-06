@@ -5,7 +5,7 @@ import {v4 as uuid} from 'uuid'
 
 export default {
    async getAll () {
-         return await Movie.find().lean()
+         return await Movie.find()
     },
 
     create(movieData){
@@ -26,7 +26,7 @@ export default {
 
     async filtron(data){
 
-      let shallowCopy = await Movie.find().lean()
+      let shallowCopy = await Movie.find()
 
       console.log(shallowCopy);
       
