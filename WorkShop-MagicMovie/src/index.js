@@ -33,7 +33,6 @@ try {
 
 } catch (error) {
   console.log('Cannot connect to DB!');
-  
 }
 
 
