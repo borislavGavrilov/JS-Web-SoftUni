@@ -40,14 +40,11 @@ moviesController.get('/movie/search' , (req,res) => {
 
    const filter = req.query
 
-   console.log(filter);
-   
-
    const movies =  movieService.filtron(filter)
 
    
 
-  res.render('search' , {movies})
+  res.render('search' , {movies , filter})
 
 })
 export default moviesController
