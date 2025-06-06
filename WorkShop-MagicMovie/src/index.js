@@ -1,5 +1,6 @@
 import express from 'express'
 import handlebars from 'express-handlebars'
+import mongoose from 'mongoose'
 
 import homeController from './views/controllers/homeController.js'
 import moviesController  from './views/controllers/moviesController.js'
@@ -22,6 +23,18 @@ app.set('views' , './src/views')
 
 //Add body parser
 app.use(express.urlencoded());
+
+//Conect to database
+
+try {
+ await mongoose.connect('mongodb://127.0.0.1:27017', { dbName: 'magic-movie' })
+ console.log('Succsesful conect to DB!');
+ 
+
+} catch (error) {
+  console.log('Cannot connect to DB!');
+  
+}
 
 
 app.use(homeController)
