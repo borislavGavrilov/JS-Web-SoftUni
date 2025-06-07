@@ -8,13 +8,12 @@ moviesController.get('/movies/create' , (req,res) => {
    res.render('create')
 })
 
-moviesController.post('/movies/create' , (req,res) => {
-
-  console.log(req.body);
+moviesController.post('/movies/create' , async (req,res) => {
+;
 
   const newMovie = req.body
  
-  movieService.create(newMovie)
+ await movieService.create(newMovie)
 
   res.redirect('/')
   
