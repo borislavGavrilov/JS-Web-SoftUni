@@ -65,4 +65,15 @@ const casts = await castService.getAll()
 
   res.render('attach' , {movie , casts})
 })
+
+moviesController.post('/movie/:movieId/attach' , async (req,res) => {
+
+   //get movie id 
+   const movieId = req.params.movieId
+
+   //get cast id 
+   const castId = req.body.castId
+
+  
+})
 export default moviesController
