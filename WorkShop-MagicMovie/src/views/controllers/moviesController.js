@@ -39,7 +39,7 @@ moviesController.get('/movies/:movieId/details' ,async (req,res) => {
  
 })
 
-moviesController.get('/movie/search' ,async (req,res) => {
+moviesController.get('/movies/search' ,async (req,res) => {
 
    const filter = req.query
 
@@ -49,5 +49,13 @@ moviesController.get('/movie/search' ,async (req,res) => {
 
   res.render('search' , {movies , filter})
 
+})
+
+moviesController.get('/movie/:movieId/attach' , async (req,res) => {
+const movieId = req.params.movieId
+
+const movie = await movieService.getOne(movieId)
+
+  res.render('attach' , {movie})
 })
 export default moviesController
