@@ -1,5 +1,6 @@
 import express from 'express'
 import movieService from '../services/movieService.js'
+import castService from '../services/castService.js'
 
 const moviesController = express.Router()
 
@@ -28,7 +29,7 @@ moviesController.get('/movies/:movieId/details' ,async (req,res) => {
    
   
    const findetMovie = await movieService.getOne(movieId)
-   console.log(findetMovie);
+  
    
 
    //create dinamic strars raiting movie
@@ -56,6 +57,12 @@ const movieId = req.params.movieId
 
 const movie = await movieService.getOne(movieId)
 
-  res.render('attach' , {movie})
+//get all casts from castService
+
+const casts = await castService.getAll()
+
+//push it to the attach page dinamic
+
+  res.render('attach' , {movie , casts})
 })
 export default moviesController
