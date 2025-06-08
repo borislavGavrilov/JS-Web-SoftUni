@@ -13,7 +13,7 @@ moviesController.post('/movies/create' , async (req,res) => {
 
   const newMovie = req.body
  
- await movieService.create(newMovie)
+  await movieService.create(newMovie)
 
   res.redirect('/')
   
