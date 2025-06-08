@@ -1,7 +1,4 @@
-
 import Movie from '../../models/movie.js'
-
-import {v4 as uuid} from 'uuid'
 
 export default {
    async getAll () {
@@ -12,7 +9,7 @@ export default {
          
        const movie = new Movie(movieData)
 
-        return movie.save()
+       return movie.save()
 
     },
 
