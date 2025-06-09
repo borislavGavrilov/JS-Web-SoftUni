@@ -15,7 +15,7 @@ export default {
 
     async getOne(movieId) {
       
-    const movie = await Movie.findById({_id: movieId})
+    const movie = await Movie.findById(movieId)
        
     return movie
 
@@ -44,4 +44,19 @@ export default {
       }
 
        return shallowCopy
-} }
+},
+async attach(movieId , castId){
+
+  console.log(movieId);
+  
+  const needeetMovie = await this.getOne(movieId)
+
+  console.log(needeetMovie);
+  
+
+  needeetMovie.casts.push(castId)
+
+  return needeetMovie.save()
+}
+
+}

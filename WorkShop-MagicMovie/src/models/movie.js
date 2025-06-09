@@ -1,4 +1,5 @@
-import { Schema ,model} from "mongoose";
+import { Schema ,model , Types} from "mongoose";
+
 
 let maxYear = new Date().getFullYear() + 5
 const urlRegex =  /^https?:\/\/.+/
@@ -48,8 +49,12 @@ const moviesSchema = new Schema({
    description:{
       type:String , 
       required: [true , 'This field is required']
-      
-   }
+
+   },
+   casts: [{
+      type: Types.ObjectId,
+      ref: 'Cast'
+   }]
 })
 
 const Movie = model('Movie' , moviesSchema)
