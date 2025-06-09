@@ -24,27 +24,28 @@ export default {
 
     async filtron(data){
 
-      let shallowCopy = await Movie.find()
-
-      console.log(shallowCopy);
-      
+      let query = Movie.find()
       
 
       if (data.search){
-          shallowCopy = shallowCopy.filter(movie => movie.title.toLowerCase().includes(data.search.toLowerCase()))
+          //shallowCopy = shallowCopy.filter(movie => movie.title.toLowerCase().includes(data.search.toLowerCase()))
+
+          query = query.find({title : {$regex: new RegExp(data.search , 'i')}})
       }
 
       if (data.genre){
-        shallowCopy = shallowCopy.filter(movie => movie.genre.toLowerCase() === data.genre.toLowerCase())
-
+       // shallowCopy = shallowCopy.filter(movie => movie.genre.toLowerCase() === data.genre.toLowerCase())
+        
+       query = query.find({genre: data.genre.toLowerCase()})
       }
 
       if (data.year){
         data.year = Number(data.year)
-        shallowCopy = shallowCopy.filter(movie => movie.year=== data.year)
+       // shallowCopy = shallowCopy.filter(movie => movie.year=== data.year)
+       query=query.find({year: data.year})
       }
 
-       return shallowCopy
+       return query
 },
 async attach(movieId , castId){
 
