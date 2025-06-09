@@ -30,7 +30,7 @@ moviesController.get('/movies/:movieId/details' ,async (req,res) => {
     
   // const casts = await movieService.getCasts(movieId)
 
-  
+
    //create dinamic strars raiting movie
 
    const needetStars = '&#x2605;'.repeat(Math.floor(findetMovie.rating))
@@ -58,7 +58,7 @@ const movie = await movieService.getOne(movieId)
 
 //get all casts from castService
 
-const casts = await castService.getAll()
+const casts = await castService.getAll({exclude : movie.casts})
 
 //push it to the attach page dinamic
 
