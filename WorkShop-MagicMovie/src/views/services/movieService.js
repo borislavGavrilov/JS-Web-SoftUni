@@ -1,4 +1,5 @@
 import Movie from '../../models/movie.js'
+import Cast from '../../models/create.js'
 
 export default {
    async getAll () {
@@ -47,16 +48,20 @@ export default {
 },
 async attach(movieId , castId){
 
-  console.log(movieId);
-  
   const needeetMovie = await this.getOne(movieId)
-
-  console.log(needeetMovie);
-  
 
   needeetMovie.casts.push(castId)
 
   return needeetMovie.save()
+},
+
+async getCasts(movieId){
+
+  const getMovie = await this.getOne(movieId)
+
+  const getCasts = await Cast.find().in('_id' , getMovie.casts)
+
+  return getCasts
 }
 
 }

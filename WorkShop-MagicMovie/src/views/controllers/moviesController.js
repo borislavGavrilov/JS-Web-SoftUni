@@ -25,18 +25,19 @@ moviesController.get('/movies/:movieId/details' ,async (req,res) => {
    //get movie id from params
    const movieId = req.params.movieId
   
-   
-   
-  
+
    const findetMovie = await movieService.getOne(movieId)
-  
+
+   const casts = await movieService.getCasts(movieId)
+
+   console.log(casts);
    
 
    //create dinamic strars raiting movie
 
    const needetStars = '&#x2605;'.repeat(Math.floor(findetMovie.rating))
 
-   res.render('details' , {findetMovie , needetStars})
+   res.render('details' , {findetMovie , needetStars , casts})
  
 })
 
@@ -71,8 +72,6 @@ moviesController.post('/movie/:movieId/attach' , async (req,res) => {
    //get movie id 
    const movieId = req.params.movieId
 
-   console.log(movieId);
-   
    //get cast id 
    const castId = req.body.castId
   
