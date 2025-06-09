@@ -16,7 +16,7 @@ export default {
 
     async getOne(movieId) {
       
-    const movie = await Movie.findById(movieId)
+    const movie = await Movie.findById(movieId).populate('casts')
        
     return movie
 
@@ -55,13 +55,13 @@ async attach(movieId , castId){
   return needeetMovie.save()
 },
 
-async getCasts(movieId){
+// async getCasts(movieId){
 
-  const getMovie = await this.getOne(movieId)
+//   const getMovie = await this.getOne(movieId)
 
-  const getCasts = await Cast.find().in('_id' , getMovie.casts)
+//   const getCasts = await Cast.find().in('_id' , getMovie.casts)
 
-  return getCasts
-}
+//   return getCasts
+// }
 
 }

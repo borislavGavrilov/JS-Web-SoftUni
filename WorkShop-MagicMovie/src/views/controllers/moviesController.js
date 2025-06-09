@@ -27,17 +27,15 @@ moviesController.get('/movies/:movieId/details' ,async (req,res) => {
   
 
    const findetMovie = await movieService.getOne(movieId)
+    
+  // const casts = await movieService.getCasts(movieId)
 
-   const casts = await movieService.getCasts(movieId)
-
-   console.log(casts);
-   
-
+  
    //create dinamic strars raiting movie
 
    const needetStars = '&#x2605;'.repeat(Math.floor(findetMovie.rating))
 
-   res.render('details' , {findetMovie , needetStars , casts})
+   res.render('details' , {findetMovie , needetStars})
  
 })
 
