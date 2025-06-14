@@ -23,11 +23,9 @@ userController.get('/users/login' , (req,res) => {
 
 userController.post('/users/login' ,async (req,res) => {
 
-    const userData = req.body
+    const {email , password} = req.body
 
-    console.log(userData);
-
-   const result = await userService.login(userData)
+   const result = await userService.login(email , password)
 
     res.redirect('/')
     
