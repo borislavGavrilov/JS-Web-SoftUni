@@ -25,7 +25,9 @@ userController.post('/users/login' ,async (req,res) => {
 
     const {email , password} = req.body
 
-   const result = await userService.login(email , password)
+   const token = await userService.login(email , password)
+
+   console.log(token);
 
     res.redirect('/')
     
