@@ -21,6 +21,19 @@ userController.get('/users/login' , (req,res) => {
   res.render('user/login')
 })
 
+userController.post('/users/login' ,async (req,res) => {
+
+    const userData = req.body
+
+    console.log(userData);
+
+   const result = await userService.login(userData)
+
+    res.redirect('/')
+    
+  
+})
+
 
 
 export default userController

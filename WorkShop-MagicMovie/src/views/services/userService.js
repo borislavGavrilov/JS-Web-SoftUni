@@ -5,5 +5,11 @@ export default {
         
         return User.create(data)
          
+    },
+
+   async login(userData){
+
+
+
     }
 }
