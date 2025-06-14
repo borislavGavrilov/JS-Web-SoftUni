@@ -2,12 +2,9 @@ import express from 'express'
 import handlebars from 'express-handlebars'
 import mongoose from 'mongoose'
 
-import homeController from './views/controllers/homeController.js'
-import moviesController  from './views/controllers/moviesController.js'
-import castControler from './views/controllers/castController.js'
-import userController from './views/controllers/usersController.js'
 import cookieParser from 'cookie-parser'
 import { auth } from './middlewares/authMiddlewares.js'
+import routers from './routes.js'
 
 const app = express()
 
@@ -50,19 +47,7 @@ try {
   console.log('Cannot connect to DB!');
 }
 
-
-app.use(homeController)
-
-app.use(moviesController)
-
-app.use(castControler)
-
-app.use(userController)
-
-
-app.all('/*url' , (req,res) => {
-  res.render('404')
-})
+app.use(routers)
 
 
 app.listen(5000 , () => {console.log('Server is listening on htpp://localhost:5000....')})

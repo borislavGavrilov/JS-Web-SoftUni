@@ -8,7 +8,9 @@ export const auth = (req,res , next) => {
         return  next()
     }
      try {
-         const verify = jsonWebToken.verify(token , jwtsecret)
+         const {id , email} = jsonWebToken.verify(token , jwtsecret)
+
+         req.user = {id , email}
             
         } catch (error) {  
             res.clearCookie('auth')

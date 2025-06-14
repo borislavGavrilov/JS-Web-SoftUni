@@ -10,7 +10,7 @@ homeController.get('/' , async (req,res) => {
 
     const authToken = req.cookies['auth']
 
-    console.log(authToken);
+    console.log(req.user);
     
 
     res.render('home' , {movies})
