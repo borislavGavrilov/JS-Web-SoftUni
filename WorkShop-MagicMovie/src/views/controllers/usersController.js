@@ -1,5 +1,6 @@
 import {Router} from 'express'
 import userService from '../services/userService.js'
+import cookieParser from 'cookie-parser'
 
 const userController = Router()
 

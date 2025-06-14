@@ -6,6 +6,7 @@ import homeController from './views/controllers/homeController.js'
 import moviesController  from './views/controllers/moviesController.js'
 import castControler from './views/controllers/castController.js'
 import userController from './views/controllers/usersController.js'
+import cookieParser from 'cookie-parser'
 
 const app = express()
 
@@ -28,6 +29,10 @@ app.set('views' , './src/views')
 
 //Add body parser
 app.use(express.urlencoded());
+
+//add cookie parser
+
+app.use(cookieParser())
 
 //Conect to database
 
