@@ -1,5 +1,5 @@
-import { Schema , model , Types } from "mongoose";
-
+import { Schema , model , Types} from "mongoose";
+import bcrypt from 'bcrypt'
 const UsersShema = Schema({
     email : {
         type : String , 
@@ -11,6 +11,11 @@ const UsersShema = Schema({
     }
 })
 
+UsersShema.pre('save' , async function () {
+
+    const salt = await bcrypt.genSalt(10)
+    this.password = await bcrypt.hash(this.password , salt)
+})
 const User = model('Úser' , UsersShema)
 
 export default User
