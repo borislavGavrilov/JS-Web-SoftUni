@@ -7,6 +7,7 @@ import moviesController  from './views/controllers/moviesController.js'
 import castControler from './views/controllers/castController.js'
 import userController from './views/controllers/usersController.js'
 import cookieParser from 'cookie-parser'
+import { auth } from './middlewares/authMiddlewares.js'
 
 const app = express()
 
@@ -33,6 +34,10 @@ app.use(express.urlencoded());
 //add cookie parser
 
 app.use(cookieParser())
+
+//add authMiddlewares
+
+app.use(auth)
 
 //Conect to database
 

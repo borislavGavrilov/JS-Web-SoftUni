@@ -7,6 +7,12 @@ const homeController = express.Router()
 homeController.get('/' , async (req,res) => {
 
     const movies = await movieService.getAll()
+
+    const authToken = req.cookies['auth']
+
+    console.log(authToken);
+    
+
     res.render('home' , {movies})
 
 })
