@@ -58,6 +58,10 @@ async attach(movieId , castId){
   return needeetMovie.save()
 },
 
+async delete(movieId) {
+  return Movie.findByIdAndDelete(movieId)
+}
+
 // async getCasts(movieId){
 
 //   const getMovie = await this.getOne(movieId)
