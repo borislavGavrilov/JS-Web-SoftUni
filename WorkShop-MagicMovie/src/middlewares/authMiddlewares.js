@@ -11,7 +11,8 @@ export const auth = (req,res , next) => {
          const {id , email} = jsonWebToken.verify(token , jwtsecret)
 
          req.user = {id , email}
-            
+         res.locals.user = {id , email}
+
         } catch (error) {  
             res.clearCookie('auth')
             res.redirect('/users/login')
