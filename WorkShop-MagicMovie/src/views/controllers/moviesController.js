@@ -92,4 +92,8 @@ moviesController.get('/movie/:movieId/delete' , async (req,res) => {
 
    res.redirect('/')
 })
+
+moviesController.get('/movie/:movieId/edit' , async (req,res) => {
+  res.render('edit')
+})
 export default moviesController
