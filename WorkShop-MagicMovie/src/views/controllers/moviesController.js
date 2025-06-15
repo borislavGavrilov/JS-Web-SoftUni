@@ -26,18 +26,21 @@ moviesController.post('/movies/create' , async (req,res) => {
 moviesController.get('/movies/:movieId/details' ,async (req,res) => {
    //get movie id from params
    const movieId = req.params.movieId
+
+   const userId = req.user?.id
   
 
    const findetMovie = await movieService.getOne(movieId)
     
   // const casts = await movieService.getCasts(movieId)
 
+  const isValid = findetMovie.owner == userId
 
    //create dinamic strars raiting movie
 
    const needetStars = '&#x2605;'.repeat(Math.floor(findetMovie.rating))
 
-   res.render('details' , {findetMovie , needetStars})
+   res.render('details' , {findetMovie , needetStars , isValid})
  
 })
 
