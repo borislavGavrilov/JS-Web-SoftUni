@@ -60,6 +60,10 @@ async attach(movieId , castId){
 
 async delete(movieId) {
   return Movie.findByIdAndDelete(movieId)
+} ,
+
+async edit(movieId , newMovieData) {
+   return await Movie.findByIdAndUpdate(movieId, newMovieData, { runValidators: true });
 }
 
 // async getCasts(movieId){

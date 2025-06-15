@@ -94,6 +94,24 @@ moviesController.get('/movie/:movieId/delete' , async (req,res) => {
 })
 
 moviesController.get('/movie/:movieId/edit' , async (req,res) => {
-  res.render('edit')
+
+   const movieId = req.params.movieId
+
+   const getMovie = await movieService.getOne(movieId)
+
+
+
+console.log( getMovie);
+
+  res.render('edit' , {getMovie})
+})
+
+moviesController.post('/movie/:movieId/edit' , async (req,res) => {
+  const movieId = req.params.movieId
+  const movieData = req.body
+
+  await movieService.edit(movieId ,movieData )
+
+  res.redirect('/')
 })
 export default moviesController
