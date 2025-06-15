@@ -13,8 +13,10 @@ moviesController.post('/movies/create' , async (req,res) => {
 ;
 
   const newMovie = req.body
+
+  const userId = req.user?.id
  
-  await movieService.create(newMovie)
+  await movieService.create(newMovie , userId)
 
   res.redirect('/')
   

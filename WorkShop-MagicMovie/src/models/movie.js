@@ -55,7 +55,11 @@ const moviesSchema = new Schema({
    casts: [{
       type: Types.ObjectId,
       ref: 'Cast'
-   }]
+   }] ,
+   owner : {
+      type : Types.ObjectId ,
+      ref : 'Úser'
+   }
 })
 
 const Movie = model('Movie' , moviesSchema)

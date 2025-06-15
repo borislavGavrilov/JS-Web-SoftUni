@@ -6,9 +6,10 @@ export default {
          return await Movie.find()
     },
 
-    create(movieData){
+    create(movieData , userId){
          
        const movie = new Movie(movieData)
+       movie.owner = userId
 
        return movie.save()
 
@@ -17,6 +18,7 @@ export default {
     async getOne(movieId) {
       
     const movie = await Movie.findById(movieId).populate('casts')
+
        
     return movie
 
