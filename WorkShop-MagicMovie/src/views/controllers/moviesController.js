@@ -103,7 +103,10 @@ function getCategoryData(category) {
       {value: 'short-film' , title: 'Short Film'},
    ]
 
-   const result = options.map(option => [{...option , selected : category === option.value}])
+   const result = options.map(option => ({ 
+  ...option, 
+  selected: category === option.value ? 'selected' : '' 
+}))
    
    return result
 }
@@ -124,10 +127,7 @@ moviesController.get('/movie/:movieId/edit' , async (req,res) => {
 
    const categoryMovie = getCategoryData(getMovie.category)
 
-   console.log(categoryMovie);
-   
-
-  res.render('edit' , {getMovie})
+  res.render('edit' , {getMovie, MovieCategory: categoryMovie})
 })
 
 moviesController.post('/movie/:movieId/edit' , async (req,res) => {
