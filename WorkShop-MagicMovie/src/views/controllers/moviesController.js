@@ -28,7 +28,7 @@ moviesController.get('/movies/:movieId/details' ,async (req,res) => {
    const movieId = req.params.movieId
 
    const userId = req.user?.id
-  
+
 
    const findetMovie = await movieService.getOne(movieId)
     
@@ -93,15 +93,39 @@ moviesController.get('/movie/:movieId/delete' , async (req,res) => {
    res.redirect('/')
 })
 
+function getCategoryData(category) {
+
+   const options = [
+      {value: 'tv-show' , title: 'Tv Show'},
+      {value: 'animation' , title: 'Animation'},
+      {value: 'movie' , title: 'Movie'},
+      {value: 'documentary' , title: 'Documentary'},
+      {value: 'short-film' , title: 'Short Film'},
+   ]
+
+   const result = options.map(option => [{...option , selected : category === option.value}])
+   
+   return result
+}
+
 moviesController.get('/movie/:movieId/edit' , async (req,res) => {
 
    const movieId = req.params.movieId
 
    const getMovie = await movieService.getOne(movieId)
 
+   const userId = req.user?.id
 
+   const isOwner = getMovie.owner?.equals(userId)
 
-console.log( getMovie);
+   if (!isOwner){
+      res.status(403)
+   }
+
+   const categoryMovie = getCategoryData(getMovie.category)
+
+   console.log(categoryMovie);
+   
 
   res.render('edit' , {getMovie})
 })
@@ -109,6 +133,7 @@ console.log( getMovie);
 moviesController.post('/movie/:movieId/edit' , async (req,res) => {
   const movieId = req.params.movieId
   const movieData = req.body
+
 
   await movieService.edit(movieId ,movieData )
 
