@@ -5,7 +5,15 @@ import { jwtsecret } from "../../config/config.js"
 
 
 export default {
-    register (data) { 
+   async  register (data) { 
+
+        const emaillReq = data.email
+
+        const isExistEmailInDb = await User.findOne({emaillReq})
+
+        if (isExistEmailInDb){
+            throw Error('Email is existing')
+        }
         
         return User.create(data)
          
