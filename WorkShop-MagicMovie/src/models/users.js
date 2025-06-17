@@ -11,6 +11,8 @@ const UsersShema = Schema({
     password : {
         type : String , 
         required : true,
+        validate : [/^[a-zA-Z0-9]+$/ , 'Should consist only English letters and digits'],
+        minLength : [6 , 'Password should be min 6 characters']
     }
 })
 
