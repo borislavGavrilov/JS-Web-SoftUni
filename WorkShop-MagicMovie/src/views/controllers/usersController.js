@@ -11,9 +11,17 @@ userController.get('/users/register' , (req,res) => {
 userController.post('/users/register' , async (req,res) => {
   const {email , password , repeatPassword} = req.body
 
-   await userService.register(email , password , repeatPassword)
+  try {
+     await userService.register(email , password , repeatPassword)
 
-  res.redirect('login')
+      res.redirect('login')
+    
+  } catch (err) { 
+
+    res.render('user/register' , {error : err.message})
+    
+  }
+  
   
 })
 

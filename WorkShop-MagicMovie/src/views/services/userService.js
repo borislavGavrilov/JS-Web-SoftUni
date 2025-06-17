@@ -8,6 +8,8 @@ export default {
    async  register (email , password , repeatPassword) { 
 
         const isExistEmailInDb = await User.findOne({email})
+        console.log(isExistEmailInDb);
+        
 
         if (isExistEmailInDb){
             throw Error('Email is existing')
