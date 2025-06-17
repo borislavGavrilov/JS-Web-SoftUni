@@ -9,10 +9,9 @@ userController.get('/users/register' , (req,res) => {
 })
 
 userController.post('/users/register' , async (req,res) => {
-  const data = req.body
+  const {email , password , repeatPassword} = req.body
 
-   await userService.register(data)
-
+   await userService.register(email , password , repeatPassword)
 
   res.redirect('login')
   

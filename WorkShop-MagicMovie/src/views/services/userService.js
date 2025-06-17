@@ -5,17 +5,19 @@ import { jwtsecret } from "../../config/config.js"
 
 
 export default {
-   async  register (data) { 
+   async  register (email , password , repeatPassword) { 
 
-        const emaillReq = data.email
-
-        const isExistEmailInDb = await User.findOne({emaillReq})
+        const isExistEmailInDb = await User.findOne({email})
 
         if (isExistEmailInDb){
             throw Error('Email is existing')
         }
+
+         if (password !== repeatPassword){
+          throw Error ('Wrong repeated password')
+  }
         
-        return User.create(data)
+        return User.create({email , password})
          
     },
 
