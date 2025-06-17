@@ -18,7 +18,7 @@ userController.post('/users/register' , async (req,res) => {
     
   } catch (err) { 
 
-    res.render('user/register' , {error : err.message})
+    res.render('user/register' , {error : err.message , userEmail: {email}})
     
   }
   
@@ -33,11 +33,18 @@ userController.post('/users/login' ,async (req,res) => {
 
     const {email , password} = req.body
 
-   const token = await userService.login(email , password)
+    try {
+    const token = await userService.login(email , password)
 
     res.cookie('auth' , token)
 
     res.redirect('/')
+      
+    } catch (err) {
+       res.render('user/login' , {error : err.message , email})
+      
+    }
+
     
   
 })

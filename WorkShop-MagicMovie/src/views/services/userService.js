@@ -8,9 +8,7 @@ export default {
    async  register (email , password , repeatPassword) { 
 
         const isExistEmailInDb = await User.findOne({email})
-        console.log(isExistEmailInDb);
         
-
         if (isExistEmailInDb){
             throw Error('Email is existing')
         }
@@ -28,15 +26,14 @@ export default {
     const findUser = await User.findOne({email})
 
     if (!findUser){
-        return new Error('No findet user with this email!')
+        throw Error('No findet user with this email!')
     }
 
-    
   
     const isValid = await bycrypt.compare(password , findUser.password)
 
     if (!isValid){
-        return new Error ('Wrong password !')
+        throw Error ('Wrong password !')
     }
 
     const payload = {
