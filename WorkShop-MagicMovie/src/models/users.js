@@ -4,7 +4,8 @@ const UsersShema = Schema({
     email : {
         type : String , 
         required : true,
-        unique: true
+        unique: true,
+        validate : [/@[\da-zA-Z]+\.[\da-zA-Z]+$/ , 'Invalid email format']
     } , 
     password : {
         type : String , 
