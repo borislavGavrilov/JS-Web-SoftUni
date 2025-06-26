@@ -1,10 +1,9 @@
 import { Router } from "express";
 import userController from "./controllers/userController.js";
-import furnitureController from "./controllers/furnitureController.js";
 
-const routes = Router();
+const routes = Router()
 
-routes.use('/users', userController);
-routes.use('/data/catalog', furnitureController);
+routes.use('/users', userController)
 
-export default routes;
+
+export default routes

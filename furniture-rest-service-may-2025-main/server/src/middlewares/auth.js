@@ -1,6 +1,5 @@
 import jsonwebtoken from 'jsonwebtoken'
 import { JWT_AUTH_SECRET } from '../config/index.js';
-import InvalidToken from '../models/InvalidToken.js';
 
 export const auth = async (req, res, next) => {
     const token = req.header('X-Authorization');
