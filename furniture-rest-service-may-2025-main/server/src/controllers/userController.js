@@ -13,9 +13,16 @@ userController.post('/register' , async (req,res) => {
 })
 
 userController.post('/login' , async (req,res) => {
-  console.log(req.body);
+ const {email , password} = req.body 
+ 
+ const result = userService.login(email , password)
 
+ res.json(result)
   
+})
+
+userController.get('/logout' , async (req,res) => {
+  res.json({ok : true})
 })
 
 
