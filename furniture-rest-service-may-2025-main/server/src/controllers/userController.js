@@ -7,7 +7,7 @@ userController.post('/register' , async (req,res) => {
    const userData = req.body
 
    const result = await  userService.register(userData)
-
+   
    res.json(result)
   
 })

@@ -19,7 +19,7 @@ app.use(cors())
 app.use(express.json());
 
 app.get('/data/catalog' , (req,res) => {
-  res.end('It s work')
+  res.json([])
 })
 
 app.use(routes)
