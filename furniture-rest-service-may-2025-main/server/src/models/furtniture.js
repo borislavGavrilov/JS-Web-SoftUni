@@ -29,10 +29,10 @@ const furnitureShema = new Schema ({
     material : {
         type : String
     } , 
-    owner : {
+    owner : [{
         type : Types.ObjectId,
         ref : 'User'
-    }
+    }]
 
 })
 

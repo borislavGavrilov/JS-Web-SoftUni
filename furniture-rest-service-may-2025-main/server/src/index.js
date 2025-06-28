@@ -18,10 +18,10 @@ app.use(cors())
 
 app.use(express.json());
 
+app.use(auth)
 
 app.use(routes)
 
-app.use(auth)
 
 app.listen(3030 , () => {console.log('Server is listening on locallHost ://3030...');
 })

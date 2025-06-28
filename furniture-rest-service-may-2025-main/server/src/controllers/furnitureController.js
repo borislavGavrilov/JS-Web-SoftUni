@@ -14,6 +14,12 @@ furnitureController.get('/catalog', async (req,res) => {
 furnitureController.post('/catalog' , async (req,res) => {
  
     const furnitureData = req.body
+    console.log(furnitureData);
+    
+
+    console.log(req.user);
+    
+    
 
     const result = await furnitureService.create(furnitureData)
 
@@ -21,8 +27,11 @@ furnitureController.post('/catalog' , async (req,res) => {
     
 })
 
-furnitureController.get('catalog/:productId' , async (req,res) => {
-  console.log(req);
+furnitureController.get('/catalog/:productId' , async (req,res) => {
+ const furnitureID = req.params.productId
+ const result = await furnitureService.findById(furnitureID)
+
+ res.json(result)
   
 })
 export default furnitureController
